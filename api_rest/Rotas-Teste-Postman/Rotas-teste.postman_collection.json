@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "c922353a-521c-4291-a63c-3d408b52b423",
+		"name": "Teste-tecnico-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27101951"
+	},
+	"item": [
+		{
+			"name": "pedidos",
+			"item": [
+				{
+					"name": "Create pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"6\",\n    \"itens\": [\n        {\"numero_item\": 1, \"codigo_produto\": \"A2B\", \"quantidade_produto\": 15, \"valor_unitario_produto\": 150.00},\n        {\"numero_item\": 2, \"codigo_produto\": \"SD9\", \"quantidade_produto\": 10, \"valor_unitario_produto\": 50.00}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ALL pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pedidos Pendentes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/pedidos?pendente=true",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pedidos"
+							],
+							"query": [
+								{
+									"key": "pendente",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/pedidos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pedidos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notas",
+			"item": [
+				{
+					"name": "Create notas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"17\",\n    \"itens\": [\n            {\"id_pedido\": \"17\", \"numero_item\": 1, \"quantidade_produto\": 15},\n            {\"id_pedido\": \"17\", \"numero_item\": 2, \"quantidade_produto\": 10},\n\n            {\"id_pedido\": \"18\", \"numero_item\": 1, \"quantidade_produto\": 5},\n            {\"id_pedido\": \"18\", \"numero_item\": 2, \"quantidade_produto\": 8},\n\n\n            {\"id_pedido\": \"19\", \"numero_item\": 1, \"quantidade_produto\": 3},\n            {\"id_pedido\": \"19\", \"numero_item\": 2, \"quantidade_produto\": 1}\n\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/notas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get ALL pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/notas",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One pedido Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/notas/17",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"notas",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

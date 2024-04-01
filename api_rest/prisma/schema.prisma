@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"] // Adicione esta linha
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model ItemPedido {
+  id                     String       @id @default(uuid())
+  id_pedido              String      @map("id_pedido")
+  codigo_produto         String
+  numero_item            Int
+  quantidade_produto     Int        
+  quantidade_atendida    Int          @default(0)
+  valor_unitario_produto Float                
+  pendente               Boolean      @default(true)
+  pedido                 Pedido       @relation(fields: [id_pedido], references: [id])
+
+  // EVITA QUE SEJA INSERIDO UM ITEM DUPLICADO NO PEDIDO
+  @@unique([id_pedido, numero_item])
+  @@map("ItemPedido")
+
+}
+
+model Pedido {
+  id         String      @id
+  valor_total Float      @default(0)
+  saldo_valor Float    @default(0)
+  itens      ItemPedido[]
+  notas      ItemNota[]
+
+   @@map("pedido")
+  
+}
+
+model ItemNota {
+  id                     String       @id @default(uuid())
+  id_nota                String       @map("id_nota")
+  id_pedido              String       @map("id_pedido")
+  numero_item            Int
+  quantidade_produto     Int     
+  pedido                 Pedido       @relation(fields: [id_pedido], references: [id])
+  nota                   Notas        @relation(fields: [id_nota], references: [id])
+
+  // EVITA QUE SEJA INSERIDO UM ITEM DUPLICADO NA NOTA
+  @@unique([id_nota,id_pedido, numero_item])
+  @@map("ItemNota")
+
+}
+
+model Notas {
+  id         String      @id
+  itens      ItemNota[]
+
+  @@map("notas")
+}
+

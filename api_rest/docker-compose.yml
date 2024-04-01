@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL="file:./dev.db"
+      
+    command: ["npm", "run", "start:dev"]
+
+  prisma-migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL="file:./dev.db"
+
+    # Execute as migrações do Prisma
+    command: ["npx", "prisma", "migrate", "dev"]
+
+
